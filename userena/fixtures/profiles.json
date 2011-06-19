@@ -1,8 +1,22 @@
-[{"pk": 1,
+[
+  {
+  "pk": 1,
+  "model": "userena._baseprofile",
+  "fields": {"user": 1
+    }
+  },
+  {
+  "pk": 2,
+  "model": "userena._baseprofile",
+  "fields": {"user": 2
+    }
+  },
+  {
+  "pk": 1,
   "model": "profiles.profile",
-  "fields": {"gender": 1,
+  "fields": {"_baseprofile_ptr": 1,
+             "gender": 1,
              "website": "",
-             "user": 1,
              "mugshot": "",
              "location": "Amsterdam",
              "privacy": "open",
@@ -12,9 +26,9 @@
   {
   "pk": 2,
   "model": "profiles.profile",
-  "fields": {"gender": 2,
+  "fields": {"_baseprofile_ptr": 2,
+             "gender": 2,
              "website": "",
-             "user": 2,
              "mugshot": "",
              "location": "New York",
              "privacy": "open",

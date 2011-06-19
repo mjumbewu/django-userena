@@ -196,7 +196,13 @@ class UserenaSignup(models.Model):
                   settings.DEFAULT_FROM_EMAIL,
                   [self.user.email,])
 
-class UserenaBaseProfile(models.Model):
+class _BaseProfile(models.Model):
+    user = models.OneToOneField(User,
+                                unique=True,
+                                verbose_name=_('user'),
+                                related_name='profile')
+
+class UserenaBaseProfile(_BaseProfile):
     """ Base model needed for extra profile functionality """
     PRIVACY_CHOICES = (
         ('open', _('Open')),
@@ -207,11 +213,6 @@ class UserenaBaseProfile(models.Model):
     MUGSHOT_SETTINGS = {'size': (userena_settings.USERENA_MUGSHOT_SIZE,
                                  userena_settings.USERENA_MUGSHOT_SIZE),
                         'crop': 'smart'}
-
-    user = models.OneToOneField(User,
-                                unique=True,
-                                verbose_name=_('user'),
-                                related_name='profile')
 
     mugshot = ThumbnailerImageField(_('mugshot'),
                                     blank=True,
